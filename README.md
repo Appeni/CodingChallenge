@@ -3,6 +3,7 @@
 A client asks you to gather information linked to social media accounts of a particular user. The architecting engineer has given you the following specifications. Anything that is not listed is considered optional and up to your experience & time management.
 
 Write JSON API endpoints that do the following:
+
 1. Given a facebook page, post, or photo, return a value indicating whether a particular user liked or shared that page, post, or photo.
 
 1. Given a twitter handle, post, page, photo, or hashtag, return a value indicating whether a particular user is following that handle, retweeted a post, tweeted with a hashtag, or shared the photo.
