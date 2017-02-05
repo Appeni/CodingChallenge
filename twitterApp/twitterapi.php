@@ -21,16 +21,14 @@ $content = $connection->get("account/verify_credentials");
 // Get tweets
 $statuses = $connection->get("statuses/home_timeline", ["count" => 25, "exclude_replies" => true]);
 
-// does user follow "bad_robot"?
-$isFollow2 = $connection->handleFollow("bad_robot");
+//// does user follow "bad_robot"?
+// $isFollow = $connection->handleFollow("bad_robot");
+// echo $isFollow;
 
+//has $targetHandle retweeted $tweetID?
+$retweeted = $connection->tweetRetweet("825144087904870401","JanMulderPlano");
 
-
-
-
-
-
-// function isFollow($userHandle, $targetHandle) {
-//   $bool = 'https://api.twitter.com/1.1/friendships/show.json'.'?source_screen_name='.$userHandle.'&target_screen_name='.$targetHandle;
-//   return $bool;
-// }
+// print_r($retweeted);
+echo '<pre>';
+  print_r($retweeted);
+  echo '</pre>';

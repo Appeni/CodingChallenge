@@ -10,7 +10,7 @@ use Abraham\TwitterOAuth\TwitterOAuth;
       // returns relationships between two accounts (user and $targetHandle) as JSON
       $relationshipData = $this->get("friendships/show", ["target_screen_name" => $targetHandle]);
 
-      // converts Twitter output to PHP mixed object
+      // converts Twitter output to PHP array
       $relationshipData = json_encode($relationshipData, true);
       $relationshipData = json_decode($relationshipData, true);
 
@@ -28,11 +28,29 @@ use Abraham\TwitterOAuth\TwitterOAuth;
 
 
 
-    // returns the posts a given user has retweeted.
-    public function postRetweet($userHandle) {
+    // returns whether or not another user ($targetID) has retweeted a tweet with ID = "$tweetID".
+    public function tweetRetweet($tweetID, $targetHandle) {
+      $retweetsData = $this->get("statuses/retweets", ["id" => $tweetID]);
+      $retweetsData = json_encode($retweetsData, true);
+      $retweetsData = json_decode($retweetsData, true);
 
+      // builds an array of users handles that retweeted $tweetID
+      $arr2 = array(
+      );
+
+      foreach ($retweetsData as $user){
+        $arr2[] = $user['user']['screen_name'];
+      }
+
+      // searches $arr2 for $targetHandle
+      if (in_array($targetHandle, $arr2)) {
+      echo $targetHandle." has retweeted this tweet.";
+      }
+      else {
+        echo "Sorry, ".$targetHandle." has not retweeted this tweet.";
+      
     }
-
+}
     // returns whether a user has tweeted with a given hashtag, as well as the tweet.
     public function hashtagUsed($userHandle, $hashtag) {
 
