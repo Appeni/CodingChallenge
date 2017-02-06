@@ -17,7 +17,7 @@ $fb = new Facebook\Facebook([
 try {
   $response = $fb->get('/me?fields=id,name');
   $user = $response->getGraphUser();
-  header ("Location: http://localhost:8888/CodingChallenge/facebookApp/private_index.php");//.$_SESSION['fb_access_token']);
+  header ("Location: http://ericrmcclellan.com/CodingChallenge/facebookApp/private_index.php");//.$_SESSION['fb_access_token']);
   exit; //redirect, or do whatever you want
 } catch(Facebook\Exceptions\FacebookResponseException $e) {
   //echo 'Graph returned an error: ' . $e->getMessage();
@@ -27,5 +27,5 @@ try {
 
 $helper = $fb->getRedirectLoginHelper();
 $permissions = ['public_profile', 'user_friends', 'email', 'user_about_me', 'user_actions.books', 'user_actions.fitness', 'user_actions.music', 'user_actions.news', 'user_actions.video', 'user_birthday', 'user_education_history', 'user_events', 'user_games_activity', 'user_hometown', 'user_likes', 'user_location', 'user_managed_groups', 'user_photos', 'user_posts', 'user_relationships', 'user_relationship_details', 'user_religion_politics', 'user_tagged_places', 'user_videos', 'user_website', 'user_work_history', 'read_custom_friendlists', 'pages_show_list'];
-$loginUrl = $helper->getLoginUrl('http://localhost:8888/CodingChallenge/facebookApp/login-callback.php', $permissions);
+$loginUrl = $helper->getLoginUrl('http://ericrmcclellan.com/CodingChallenge/facebookApp/login-callback.php', $permissions);
 echo '<a href="' . $loginUrl . '">Log in with Facebook!</a>';
