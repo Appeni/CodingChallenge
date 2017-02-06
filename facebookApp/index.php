@@ -17,7 +17,7 @@ $fb = new Facebook\Facebook([
 try {
   $response = $fb->get('/me?fields=id,name');
   $user = $response->getGraphUser();
-  header ("Location: http://localhost:8888/CodingChallenge/facebookApp/results.php");//.$_SESSION['fb_access_token']);
+  header ("Location: http://localhost:8888/CodingChallenge/facebookApp/private_index.php");//.$_SESSION['fb_access_token']);
   exit; //redirect, or do whatever you want
 } catch(Facebook\Exceptions\FacebookResponseException $e) {
   //echo 'Graph returned an error: ' . $e->getMessage();

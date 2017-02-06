@@ -77,4 +77,4 @@ $_SESSION['fb_access_token'] = (string) $accessToken;
 // You can redirect them to a members-only page.
 // echo $accessToken.'</br></br>';
 // echo $_SESSION['fb_access_token'].'</br></br>';
-header ("Location: http://localhost:8888/CodingChallenge/facebookApp/results.php");//.$_SESSION['fb_access_token']);
+header ("Location: http://localhost:8888/CodingChallenge/facebookApp/private_index.php");//.$_SESSION['fb_access_token']);

@@ -22,14 +22,21 @@ $content = $connection->get("account/verify_credentials");
 // $statuses = $connection->get("statuses/home_timeline", ["count" => 25, "exclude_replies" => true]);
 
 // does user follow $isFollowTarget?
-$isFollowTarget = "bad_robot";
+$isFollowTarget = $_POST['isFollowTarget'];
 $isFollow = $connection->handleFollow($isFollowTarget);
-
+if ($isFollowTarget != NULL){
+  echo $isFollow;
+}
 // has $targetHandle retweeted $tweetID?
-$targetHandle = "JanMulderPlano";
-$tweetID = "825144087904870401";
+$targetHandle = $_POST['targetHandle'];
+$tweetID = $_POST['tweetID'];
 $retweeted = $connection->tweetRetweet($tweetID,$targetHandle);
-
+if ($targetHandle != NULL and $tweetID != NULL){
+  echo $retweeted;
+}
 // has your account tweeted with $hashtag?
-$hashtag = "executiveorders";
+$hashtag = $_POST['hashtag'];
 $hashtagged = $connection->hashtagUsed($hashtag);
+if ($hashtag != NULL){
+  echo $hashtagged;
+}

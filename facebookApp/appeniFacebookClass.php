@@ -10,17 +10,9 @@ class fbRequest extends Facebook\Facebook{
     $data = $this->get($fbObject, $accessToken);
     return $data;
   }
-
-//returns user likes as array of names only. Input is original array of likes
-  public function stringToArray($jsonString){
-
-    // converts FB JSON output to PHP array
-    $jsonString = json_encode($jsonString, true);
-    $newArray = json_decode($jsonString, true);
-    return $newArray;
-
-  }
 }
+
+
 
 
 
