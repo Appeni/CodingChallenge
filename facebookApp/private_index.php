@@ -56,6 +56,8 @@ echo 'User ID: ' . $user['id'].'</br></br>';
             <input type = "submit">
         </form>
 <p>Facebook does not allow checking to see if a user has shared a page.</p>
+<a href='http://stackoverflow.com/questions/19550080/check-if-user-shared-on-facebook'>here</a>
+and <a href='http://stackoverflow.com/questions/29073010/check-if-user-have-shared-the-page-on-social-networking-website'>here</a>
         <?php
 // echo "<pre>";
 // print_r($user['likes']);
