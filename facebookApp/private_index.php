@@ -55,7 +55,7 @@ echo 'User ID: ' . $user['id'].'</br></br>';
             <input type = "text" name = "page_ID" placeholder="Page ID">
             <input type = "submit">
         </form>
-
+<p>Facebook does not allow checking to see if a user has shared a page.</p>
         <?php
 // echo "<pre>";
 // print_r($user['likes']);
