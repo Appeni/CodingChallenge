@@ -2,14 +2,15 @@
 require "twitterapi.php";
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-echo '<head><title>Appeni coding challenge data</title></head>';
+?>
+<head><title>Appeni coding challenge data</title></head>
 
-echo '<body>';
+<body>
 
-echo '<h1>Twitter Data</h1>';
+<h1>Twitter Data</h1>
 
- // prints $isFollow to page
- ?>
+ <!--prints $isFollow to page-->
+
 
          <form method = "post" action = "twitterapi.php">
            <h2>Enter the Twitter handle (without '@') below to see if you follow the account </h2>

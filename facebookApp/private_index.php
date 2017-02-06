@@ -6,11 +6,11 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 // Include the required dependencies.
 require_once(__DIR__.'/php-graph-sdk-5.0.0/src/Facebook/autoload.php');
-require_once(__DIR__.'/appeniFacebookClass.php');
+
 
 
 // Set the default parameters
-$fb = new fbRequest([
+$fb = new Facebook\Facebook([
   'app_id' => '1767155500278948',
   'app_secret' => 'bacdd79f839aad7d257f27fac8e49742',
   'default_graph_version' => 'v2.5',
@@ -27,7 +27,7 @@ $fbObject = '/me?fields=id,name,email,likes';
 // Get the profile
 try {
        // Returns a `Facebook\FacebookResponse` object
-       $fbResponse = $fb->response($fbObject, $accessToken);
+       $fbResponse = $fb->get($fbObject, $accessToken);
 }
 catch(Facebook\Exceptions\FacebookResponseException $e) {
        echo 'Graph returned an error: ' . $e->getMessage();
@@ -64,13 +64,6 @@ and <a href='http://stackoverflow.com/questions/29073010/check-if-user-have-shar
 // echo "</pre>";
 // sample page returns true: 1779888972228000
 
-
-
-//returns a value indicating whether or not the user has shared $targetShare
-// $targetShare = '';
-//
-// echo '<h2>Has the User shared the page'.$targetShare.'?<h2>';
-//   echo '<h4>'.$doesLike.'</h4>';
 
 
 
