@@ -18,17 +18,18 @@ require "appeniTwitterClass.php";
 $connection = new twitterRequests($consumer_key, $consumer_secret, $access_token, $access_token_secret);
 $content = $connection->get("account/verify_credentials");
 
-// Get tweets
-$statuses = $connection->get("statuses/home_timeline", ["count" => 25, "exclude_replies" => true]);
+// // Get tweets
+// $statuses = $connection->get("statuses/home_timeline", ["count" => 25, "exclude_replies" => true]);
 
-//// does user follow "bad_robot"?
-// $isFollow = $connection->handleFollow("bad_robot");
-// echo $isFollow;
+// does user follow $isFollowTarget?
+$isFollowTarget = "bad_robot";
+$isFollow = $connection->handleFollow($isFollowTarget);
 
-//has $targetHandle retweeted $tweetID?
-$retweeted = $connection->tweetRetweet("825144087904870401","JanMulderPlano");
+// has $targetHandle retweeted $tweetID?
+$targetHandle = "JanMulderPlano";
+$tweetID = "825144087904870401";
+$retweeted = $connection->tweetRetweet($tweetID,$targetHandle);
 
-// print_r($retweeted);
-echo '<pre>';
-  print_r($retweeted);
-  echo '</pre>';
+// has your account tweeted with $hashtag?
+$hashtag = "executiveorders";
+$hashtagged = $connection->hashtagUsed($hashtag);

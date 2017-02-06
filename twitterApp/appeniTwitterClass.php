@@ -19,10 +19,10 @@ use Abraham\TwitterOAuth\TwitterOAuth;
 
       // evaluates following and returns a string
       if($isFollow == 1) {
-        echo 'The user follows '.$targetHandle.'!';
+        return 'The user follows @'.$targetHandle.'!';
       }
       else {
-        echo 'The user does not follow '.$targetHandle.'.';
+        return 'The user does not follow @'.$targetHandle.'.';
       }
     }
 
@@ -42,19 +42,48 @@ use Abraham\TwitterOAuth\TwitterOAuth;
         $arr2[] = $user['user']['screen_name'];
       }
 
-      // searches $arr2 for $targetHandle
+      // searches $arr2 for $targetHandle (DOES NOT CURRENTLY SEARCH MULTIPLE LEVELS)
       if (in_array($targetHandle, $arr2)) {
-      echo $targetHandle." has retweeted this tweet.";
+      return "@".$targetHandle." has retweeted this tweet.";
       }
       else {
-        echo "Sorry, ".$targetHandle." has not retweeted this tweet.";
-      
+        return "Sorry, @".$targetHandle." has not retweeted this tweet.";
+
     }
 }
     // returns whether a user has tweeted with a given hashtag, as well as the tweet.
-    public function hashtagUsed($userHandle, $hashtag) {
+    public function hashtagUsed($hashtag) {
+      $tweetsData = $this->get("statuses/user_timeline");
+      $tweetsData = json_encode($tweetsData, true);
+      $tweetsData = json_decode($tweetsData, true);
+
+      // builds an array of users handles that retweeted $tweetID
+      $arr2 = array(
+      );
+
+      foreach ($tweetsData as $tweet){
+        if ($tweet['entities']['hashtags']){
+
+            $arr2[] = $tweet['entities']['hashtags'];
+
+        }
+      }
+
+
+      // searches $arr2 for $targetHandle
+      if (in_array($hashtag, $arr2)) {
+      return "#".$hashtag." occurs in a tweet!";
+      }
+      else {
+        return "Sorry, #".$hashtag." does not occur in a tweet.";
 
     }
+
+    // echo '<pre>';
+    //   print_r($arr2);
+    //   echo '</pre>';
+    }
+
 
     //returns whether a user has shared a photo or not.
     public function photoShare($userHandle) {
